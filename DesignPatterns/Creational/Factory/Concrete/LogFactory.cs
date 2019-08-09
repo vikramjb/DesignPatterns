@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using DesignPatterns.Creational.Enum;
 using DesignPatterns.Creational.Factory.Interface;
 
 namespace DesignPatterns.Creational.Factory.Concrete
 {
     public class LogFactory : ILogFactory
     {
+
         private LogFactory()
         {
 
@@ -14,19 +13,22 @@ namespace DesignPatterns.Creational.Factory.Concrete
 
         public static ILogFactory GetInstance { get; } = new LogFactory();
 
-        public ILogger CreateConsoleLogger()
-        {
-            return new ConsoleLogger();
-        }
 
-        public ILogger CreateDBLogger()
+        public ILogger CreateLogger(LogTypes logType)
         {
-            return new DBLogger();
-        }
-
-        public ILogger CreateFileLogger()
-        {
-            return new FileLogger();
+            switch (logType)
+            {
+                case LogTypes.None:
+                    return new DBLogger();
+                case LogTypes.Console:
+                    return new ConsoleLogger();
+                case LogTypes.DB:
+                    return new DBLogger();
+                case LogTypes.File:
+                    return new FileLogger();
+                default:
+                    return new NullLogger();
+            }
         }
     }
 }

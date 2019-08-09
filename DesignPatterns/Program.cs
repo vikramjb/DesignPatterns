@@ -8,12 +8,14 @@ namespace DesignPatterns
         static void Main(string[] args)
         {
             //Logger Implementation with Factory Design Pattern
-            ILogger fileLogger = LogFactory.GetInstance.CreateFileLogger();
+            ILogger noLogger = LogFactory.GetInstance.CreateLogger(Creational.Enum.LogTypes.None);
+            noLogger.LogError("No Error Logging");
+            ILogger fileLogger = LogFactory.GetInstance.CreateLogger(Creational.Enum.LogTypes.File);
             fileLogger.LogError("File Error Logging");
-            ILogger dbLogger = LogFactory.GetInstance.CreateDBLogger();
-            dbLogger.LogInformation("DB Error Logging");
-            ILogger consoleLogger = LogFactory.GetInstance.CreateConsoleLogger();
-            consoleLogger.LogWarning("Console Error Logging");
+            ILogger dbLogger = LogFactory.GetInstance.CreateLogger(Creational.Enum.LogTypes.DB);
+            dbLogger.LogError("DB Error Logging");
+            ILogger consoleLogger = LogFactory.GetInstance.CreateLogger(Creational.Enum.LogTypes.Console);
+            consoleLogger.LogError("Console Error Logging");
 
         }
     }
