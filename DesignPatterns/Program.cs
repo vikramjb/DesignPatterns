@@ -1,7 +1,4 @@
-﻿//using DesignPatterns.Creational.Factory.Concrete;
-//using DesignPatterns.Creational.Factory.Interface;
-
-using DesignPatterns.Creational.Factory.Concrete;
+﻿using DesignPatterns.Creational.Factory.Concrete;
 using DesignPatterns.Creational.Factory.Interface;
 
 namespace DesignPatterns
@@ -10,6 +7,7 @@ namespace DesignPatterns
     {
         static void Main(string[] args)
         {
+            //Logger Implementation with Factory Design Pattern
             ILogger fileLogger = LogFactory.GetInstance.CreateFileLogger();
             fileLogger.LogError("File Error Logging");
             ILogger dbLogger = LogFactory.GetInstance.CreateDBLogger();

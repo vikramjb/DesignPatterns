@@ -7,21 +7,12 @@ namespace DesignPatterns.Creational.Factory.Concrete
 {
     public class LogFactory : ILogFactory
     {
-
-        static ILogFactory _localInstance = new LogFactory();
-
         private LogFactory()
         {
 
         }
 
-        public static ILogFactory GetInstance
-        {
-            get
-            {
-                return _localInstance;
-            }
-        }
+        public static ILogFactory GetInstance { get; } = new LogFactory();
 
         public ILogger CreateConsoleLogger()
         {
