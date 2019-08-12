@@ -10,8 +10,13 @@ namespace DesignPatterns
     {
         static void Main(string[] args)
         {
+            InvokeFactoryPattern();
+            InvokeAbstractFactoryPattern();
 
-            #region Factory Pattern
+        }
+
+        private static void InvokeFactoryPattern()
+        {
             //Logger Implementation with Factory Design Pattern
             ILogger logger = LogFactory.GetInstance.CreateLogger(LogTypes.None);
             logger.LogError($"{logger.GetType()}");
@@ -34,12 +39,10 @@ namespace DesignPatterns
             logger.LogError($"{logger.GetType()}");
             logger.LogInformation($"{logger.GetType()}");
             logger.LogWarning($"{logger.GetType()}");
+        }
 
-            #endregion
-
-
-            #region Abstract Factory Pattern
-
+        private static void InvokeAbstractFactoryPattern()
+        {
             IUIFactory uiFactory = GetUISpecificFactory(OperatingSystemUITypes.None);
             uiFactory.CreateButton().Draw();
             uiFactory.CreateRadioButton().Draw();
@@ -63,10 +66,6 @@ namespace DesignPatterns
             uiFactory.CreateRadioButton().Draw();
             uiFactory.CreateTextBox().Draw();
             uiFactory.CreateCheckBox().Draw();
-            #endregion
-
-
-
         }
 
         private static IUIFactory GetUISpecificFactory(OperatingSystemUITypes osUIType)
