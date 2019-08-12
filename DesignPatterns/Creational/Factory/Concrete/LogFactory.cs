@@ -1,4 +1,4 @@
-﻿using DesignPatterns.Creational.Enum;
+﻿using DesignPatterns.Enum;
 using DesignPatterns.Creational.Factory.Interface;
 
 namespace DesignPatterns.Creational.Factory.Concrete
@@ -19,7 +19,7 @@ namespace DesignPatterns.Creational.Factory.Concrete
             switch (logType)
             {
                 case LogTypes.None:
-                    return new DBLogger();
+                    return new NullLogger();
                 case LogTypes.Console:
                     return new ConsoleLogger();
                 case LogTypes.DB:

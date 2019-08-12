@@ -1,4 +1,4 @@
-﻿namespace DesignPatterns.Creational.Enum
+﻿namespace DesignPatterns.Enum
 {
     public enum LogTypes
         {

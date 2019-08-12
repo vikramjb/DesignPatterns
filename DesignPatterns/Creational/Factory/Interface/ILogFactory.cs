@@ -1,4 +1,4 @@
-﻿using DesignPatterns.Creational.Enum;
+﻿using DesignPatterns.Enum;
 
 namespace DesignPatterns.Creational.Factory.Interface
 {

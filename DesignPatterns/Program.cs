@@ -1,6 +1,8 @@
 ﻿using System;
 using DesignPatterns.Creational.AbstractFactory.Interface;
-using DesignPatterns.Creational.Enum;
+using DesignPatterns.Creational.Factory.Concrete;
+using DesignPatterns.Creational.Factory.Interface;
+using DesignPatterns.Enum;
 
 namespace DesignPatterns
 {
@@ -10,39 +12,53 @@ namespace DesignPatterns
         {
 
             #region Factory Pattern
-                ////Logger Implementation with Factory Design Pattern
-                //ILogger noLogger = LogFactory.GetInstance.CreateLogger(Creational.Enum.LogTypes.None);
-                //noLogger.LogError("No Error Logging");
-                //ILogger fileLogger = LogFactory.GetInstance.CreateLogger(Creational.Enum.LogTypes.File);
-                //fileLogger.LogError("File Error Logging");
-                //ILogger dbLogger = LogFactory.GetInstance.CreateLogger(Creational.Enum.LogTypes.DB);
-                //dbLogger.LogError("DB Error Logging");
-                //ILogger consoleLogger = LogFactory.GetInstance.CreateLogger(Creational.Enum.LogTypes.Console);
-                //consoleLogger.LogError("Console Error Logging");
+            //Logger Implementation with Factory Design Pattern
+            ILogger logger = LogFactory.GetInstance.CreateLogger(LogTypes.None);
+            logger.LogError($"{logger.GetType()}");
+            logger.LogInformation($"{logger.GetType()}");
+            logger.LogWarning($"{logger.GetType()}");
+
+            logger = LogFactory.GetInstance.CreateLogger(LogTypes.File);
+            logger.LogError($"{logger.GetType()}");
+            logger.LogInformation($"{logger.GetType()}");
+            logger.LogWarning($"{logger.GetType()}");
+
+
+            logger = LogFactory.GetInstance.CreateLogger(LogTypes.DB);
+            logger.LogError($"{logger.GetType()}");
+            logger.LogInformation($"{logger.GetType()}");
+            logger.LogWarning($"{logger.GetType()}");
+
+
+            logger = LogFactory.GetInstance.CreateLogger(LogTypes.Console);
+            logger.LogError($"{logger.GetType()}");
+            logger.LogInformation($"{logger.GetType()}");
+            logger.LogWarning($"{logger.GetType()}");
+
             #endregion
 
 
             #region Abstract Factory Pattern
 
-            IUIFactory uiFactory = GetUIConfig(OperatingSystemUITypes.None);
+            IUIFactory uiFactory = GetUISpecificFactory(OperatingSystemUITypes.None);
             uiFactory.CreateButton().Draw();
             uiFactory.CreateRadioButton().Draw();
             uiFactory.CreateTextBox().Draw();
             uiFactory.CreateCheckBox().Draw();
 
-            uiFactory = GetUIConfig(OperatingSystemUITypes.Windows);
+            uiFactory = GetUISpecificFactory(OperatingSystemUITypes.Windows);
             uiFactory.CreateButton().Draw();
             uiFactory.CreateRadioButton().Draw();
             uiFactory.CreateTextBox().Draw();
             uiFactory.CreateCheckBox().Draw();
 
-            uiFactory = GetUIConfig(OperatingSystemUITypes.MAC);
+            uiFactory = GetUISpecificFactory(OperatingSystemUITypes.MAC);
             uiFactory.CreateButton().Draw();
             uiFactory.CreateRadioButton().Draw();
             uiFactory.CreateTextBox().Draw();
             uiFactory.CreateCheckBox().Draw();
 
-            uiFactory = GetUIConfig(OperatingSystemUITypes.Linux);
+            uiFactory = GetUISpecificFactory(OperatingSystemUITypes.Linux);
             uiFactory.CreateButton().Draw();
             uiFactory.CreateRadioButton().Draw();
             uiFactory.CreateTextBox().Draw();
@@ -53,7 +69,7 @@ namespace DesignPatterns
 
         }
 
-        private static IUIFactory GetUIConfig(OperatingSystemUITypes osUIType)
+        private static IUIFactory GetUISpecificFactory(OperatingSystemUITypes osUIType)
         {
             switch (osUIType)
             {

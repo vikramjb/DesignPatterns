@@ -1,4 +1,5 @@
-﻿using DesignPatterns.Creational.Factory.Interface;
+﻿using System;
+using DesignPatterns.Creational.Factory.Interface;
 
 namespace DesignPatterns.Creational.Factory.Concrete
 {
@@ -10,17 +11,17 @@ namespace DesignPatterns.Creational.Factory.Concrete
         }
         public void LogError(string errorMessage)
         {
-            
+            Console.WriteLine($"No Error Logger configured using {errorMessage}");
         }
 
         public void LogInformation(string errorMessage)
         {
-            
+            Console.WriteLine($"No Information Logger configured using {errorMessage}");
         }
 
         public void LogWarning(string errorMessage)
         {
-            
+            Console.WriteLine($"No Warning Logger configured using {errorMessage}");
         }
     }
 }

@@ -12,17 +12,17 @@ namespace DesignPatterns.Creational.Factory.Concrete
 
         public void LogError(string errorMessage)
         {
-            Console.WriteLine(errorMessage);
+            Console.WriteLine($"Error Logger configured using {errorMessage}");
         }
 
         public void LogInformation(string errorMessage)
         {
-            Console.WriteLine(errorMessage);
+            Console.WriteLine($"Information Logger configured using {errorMessage}");
         }
 
         public void LogWarning(string errorMessage)
         {
-            Console.WriteLine(errorMessage);
+            Console.WriteLine($"Warning Logger configured using {errorMessage}");
         }
     }
 }
