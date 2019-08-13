@@ -1,5 +1,7 @@
 ﻿using System;
 using DesignPatterns.Creational.AbstractFactory.Interface;
+using DesignPatterns.Creational.Builder.Concrete;
+using DesignPatterns.Creational.Builder.Interface;
 using DesignPatterns.Creational.Factory.Concrete;
 using DesignPatterns.Creational.Factory.Interface;
 using DesignPatterns.Enum;
@@ -10,9 +12,27 @@ namespace DesignPatterns
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("*****************************************************************************");
             InvokeFactoryPattern();
+            Console.WriteLine("*****************************************************************************");
             InvokeAbstractFactoryPattern();
+            Console.WriteLine("*****************************************************************************");
+            InvokeBuilderPattern();
+            Console.WriteLine("*****************************************************************************");
 
+        }
+
+        private static void InvokeBuilderPattern()
+        {
+            var robotBuilder = new RobotCreator(new DumbRobotBuilder());
+            robotBuilder.CreateRobot();
+            var robot = robotBuilder.GetRobot();
+            robot.ShowRobotInfo();
+
+            robotBuilder = new RobotCreator(new SmartRobotBuilder());
+            robotBuilder.CreateRobot();
+            robot = robotBuilder.GetRobot();
+            robot.ShowRobotInfo();
         }
 
         private static void InvokeFactoryPattern()
