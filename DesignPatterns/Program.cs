@@ -1,9 +1,9 @@
 ﻿using System;
 using DesignPatterns.Creational.AbstractFactory.Interface;
 using DesignPatterns.Creational.Builder.Concrete;
-using DesignPatterns.Creational.Builder.Interface;
 using DesignPatterns.Creational.Factory.Concrete;
 using DesignPatterns.Creational.Factory.Interface;
+using DesignPatterns.Creational.Singleton.Interface;
 using DesignPatterns.Enum;
 
 namespace DesignPatterns
@@ -19,6 +19,21 @@ namespace DesignPatterns
             Console.WriteLine("*****************************************************************************");
             InvokeBuilderPattern();
             Console.WriteLine("*****************************************************************************");
+            InvokeSingletonPattern();
+            Console.WriteLine("*****************************************************************************");
+        }
+
+        private static void InvokeSingletonPattern()
+        {
+            int dbInstanceCounter = 3;
+
+            for (int iCounter= 0; iCounter < dbInstanceCounter; iCounter++)
+            {
+                Console.WriteLine($"Trying to connect with Counter_{iCounter}");
+                DBConnector dBConnector = DBConnector.GetInstance($"Counter_{iCounter}");
+                dBConnector.Connect();
+                dBConnector.Disconnect();
+            }
 
         }
 
