@@ -1,9 +1,10 @@
-﻿using System;
+using System;
 using DesignPatterns.Creational.AbstractFactory.Interface;
 using DesignPatterns.Creational.Builder.Concrete;
 using DesignPatterns.Creational.Factory.Concrete;
 using DesignPatterns.Creational.Factory.Interface;
 using DesignPatterns.Creational.Singleton.Interface;
+using DesignPatterns.Creational.Prototype.Concrete;
 using DesignPatterns.Enum;
 
 namespace DesignPatterns
@@ -34,7 +35,19 @@ namespace DesignPatterns
                 dBConnector.Connect();
                 dBConnector.Disconnect();
             }
+            InvokePrototypePattern();
+            Console.WriteLine("*****************************************************************************");
 
+        }
+
+        private static void InvokePrototypePattern()
+        {
+            Lamb warmWhiteLamb = new Lamb("Warm","White",4);
+            var cloneLamb1 = warmWhiteLamb.Clone();
+            Lamb coldWhiteLamb = new Lamb("Cold", "White", 4);
+            var cloneLamb2 = coldWhiteLamb.Clone();
+            Lamb coldRedLamb = new Lamb("Cold", "Red", 4);
+            var cloneLamb3 = coldRedLamb.Clone();
         }
 
         private static void InvokeBuilderPattern()
